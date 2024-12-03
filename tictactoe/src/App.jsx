@@ -1,81 +1,88 @@
 import { useState } from 'react';
-// import { StrictMode } from 'react';
-// import { createRoot } from 'react-dom/client';
-import './index.css'
 
-
-function Square({value, onSquareClick}) {
+function Display({ title, children }) {
+  const[isActive, setIsActive] = useState(false);
   return (
-    <button className="square" onClick={onSquareClick}>
-      {value}
-    </button>
+    <section className="display">
+      <h3>{title}</h3>
+      {isActive ? ( <p>{children}</p> ) : (
+        <button onClick={() => setIsActive(true)}>
+          Show
+        </button>
+      )}
+    </section>
   );
 }
-
-export default function Board() {
-  const [xIsNext, setXIsNext] = useState(true);
-  const [squares, setSquares] = useState(Array(9).fill(null));
-
-  function handleClick(i) {
-    if (calculateWinner(squares) || squares[i]) {
-      return;
-    }
-    const nextSquares = squares.slice();
-    if (xIsNext) {
-      nextSquares[i] = 'X';
-    } else {
-      nextSquares[i] = 'O';
-    }
-    setSquares(nextSquares);
-    setXIsNext(!xIsNext);
-  }
-
-  const winner = calculateWinner(squares);
-  let status;
-  if (winner) {
-    status = 'Winner: ' + winner;
-  } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
-  }
-
+function Cards() {
   return (
     <>
-      <div className="status">{status}</div>
-      <div className="board-row">
-        <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-        <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-        <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
-      </div>
-      <div className="board-row">
-        <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-        <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-        <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
-      </div>
-      <div className="board-row">
-        <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-        <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-        <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
-      </div>
+    {/* This would be helpful for an FAQ section */}
+      {/* <h2>Geography</h2> */}
+      <Display title=" Botswana">
+      Gaborone
+      </Display>
+
+      <Display title="New Zealand">
+        Wellington
+      </Display>
+    </>
+  );
+
+}function Characters2() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  return (
+    <>
+      {/* <h2>Spongebob</h2> */}
+      <Display2
+        title="The Characters"
+        isActive={activeIndex === 0}
+        onShow={() => setActiveIndex(0)}
+      >
+        Spongebob Patrick Sandy
+      </Display2>
+      <Display2
+        title="Where They Live"
+        isActive={activeIndex === 1}
+        onShow={() => setActiveIndex(1)}
+      >
+        Pineapple Rock Anchor
+      </Display2>
     </>
   );
 }
 
-function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
-    }
-  }
-  return null;
+function Display2({ title, children, isActive, onShow}) {
+  return (
+    <section className="Display2">
+      <h3>{title}</h3>
+      {isActive ? (
+        <p>{children}</p>
+      ) : (
+        <button onClick={onShow}>
+          Show
+        </button>
+      )}
+    </section>
+  );
 }
+
+
+export default function App() {
+  return(
+  <>
+<table>
+<tr>
+<th>Geography</th>
+  <Cards />
+</tr>
+  <h2> -------------</h2>
+  <tr>
+    
+  <th>Celebrities</th>
+  <Characters2 />
+  </tr>
+</table>
+
+  </>
+  );
+  }
