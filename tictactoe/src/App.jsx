@@ -1,28 +1,22 @@
 import { useState } from 'react';
 import './App.css'
 
-
 // Jessica Kincaid December 4, 2024
 // Geography Flashcards for WEB 234 - Web Apps I 
-
-// Change the css in App.css
-
 
 function Display({ title, children }) {
   const[isActive, setIsActive] = useState(false);
   return (
     <section className="display">
-      <h4>{title}</h4>
-      {isActive ? ( <p>{children}</p> ) : (
-        <button onClick={() => setIsActive(true)}>
+      <h2>{title}</h2>
+      {isActive ? ( <h2>{children}</h2> ) : (
+        <button style={{backgroundColor: "skyblue"}} onClick={() => setIsActive(true)}>
           Reveal Country
         </button>
       )}
     </section>
   );
 }
-
-
 
 function FlashCardPic({photo}) {
   return (
@@ -38,47 +32,71 @@ function getUrl(photo) {
   );
 }
 
-
 export default function App() {
   return(
   <>
-  <h4>Below are scenes from capital cities around the world. </h4>
-<p>Guess the country that goes with each capital city!</p>
 
-{/* // Dhaka, Bangladesh https://imgur.com/aFWnMQS  */}
-<div>
-      <FlashCardPic
-        photo={{ id: 'aFWnMQSm'}}
-        />
-<Display title=" Dhaka">
-     Bangladesh
+
+  <h1>Geography Flashcards</h1>
+  <h2>Below are scenes from capital cities around the world. </h2>
+  <h2>Guess the country for each city!</h2>
+
+<div class="container">
+
+
+
+
+<div className='card'>
+      <FlashCardPic photo={{ id: 'MBkS28D'}} />
+        <Display title=" Kathmandu">
+        Nepal
+        </Display>
+      <br />
+</div>
+
+<div className='card'>
+      <FlashCardPic photo={{ id: 'aFWnMQS'}} />
+        <Display title=" Dhaka">
+        Bangladesh
+        </Display>
+      <br />
+</div>
+
+<div className='card'>
+      <FlashCardPic photo={{ id: 'zo04Xkk'}}/>
+      <Display title=" Tallinn">
+     Estonia
       </Display>
       <br />
 </div>
 
-<div>
-      <FlashCardPic
-        photo={{ id: 'zo04Xkkm'}}
-        />
-<Display title=" Tallinn">
-     Estonia
-      </Display>
-</div>
 
-<div>
-      <FlashCardPic photo={{  id: '6QkYTkXm'}} />
-
-<Display title=" Ashgabat">
+<div className='card'>
+      <FlashCardPic photo={{  id: '6QkYTkX'}} />
+      <Display title=" Ashgabat">
       Turkmenistan
       </Display>
+      <br />
 </div>
 
-  <div>
-      <FlashCardPic photo={{ id: 'ViRKEIZm'}}/>
+<div className='card'>
+      <FlashCardPic photo={{ id: 'rOIRHmh'}} />
+      <Display title=" Colombo">
+      Sri Lanka
+      </Display>
+      <br />
+</div>
+
+
+<div className='card'>
+      <FlashCardPic photo={{ id: 'ViRKEIZ'}}/>
       <Display title=" Kuala Lumpur">
         Malaysia
       </Display>
+      <br />
     </div>
+</div>
   </>
   );
   }
+
