@@ -24,42 +24,6 @@ function Display({ title, children }) {
 
 
 
-function Bangladesh() {
-  return (
-    <img
-    country="Bangladesh"
-    src="https://imgur.com/aFWnMQSs"
-    />
-  );
-}
-
-function Turkmenistan() {
-  return (
-    <img
-    country="Turkmenistan"
-    src="https://imgur.com/6QkYTkXs"
-    />
-  );
-}
-
-function Malaysia() {
-  return (
-    <img
-    country="Malaysia"
-    src="https://imgur.com/ViRKEIZs"
-    />
-  );
-}
-
-function Estonia() {
-  return (
-    <img
-    country="Estonia"
-    src="https://imgur.com/zo04Xkks"
-    />
-  );
-}
-
 function FlashCardPic({photo}) {
   return (
     <>
@@ -82,50 +46,39 @@ export default function App() {
 <p>Guess the country that goes with each capital city!</p>
 
 {/* // Dhaka, Bangladesh https://imgur.com/aFWnMQS  */}
-
-<Bangladesh />
+<div>
       <FlashCardPic
-        photo={{ 
-        id: 'aFWnMQSm'}}
+        photo={{ id: 'aFWnMQSm'}}
         />
 <Display title=" Dhaka">
      Bangladesh
       </Display>
+      <br />
+</div>
 
-
-
-<Estonia />
+<div>
       <FlashCardPic
-        photo={{ 
-        id: 'zo04Xkkm'}}
+        photo={{ id: 'zo04Xkkm'}}
         />
 <Display title=" Tallinn">
      Estonia
       </Display>
+</div>
 
-
-
- <Turkmenistan />
-      <FlashCardPic
-        photo={{ 
-        id: '6QkYTkXm'}}
-        />
+<div>
+      <FlashCardPic photo={{  id: '6QkYTkXm'}} />
 
 <Display title=" Ashgabat">
       Turkmenistan
       </Display>
+</div>
 
-
-
-  <Malaysia />
-      <FlashCardPic
-        photo={{ 
-        id: 'ViRKEIZm'}}
-        />
-
-<Display title=" Kuala Lumpur">
-      Malaysia
+  <div>
+      <FlashCardPic photo={{ id: 'ViRKEIZm'}}/>
+      <Display title=" Kuala Lumpur">
+        Malaysia
       </Display>
+    </div>
   </>
   );
   }
