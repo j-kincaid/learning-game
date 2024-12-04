@@ -36,14 +36,14 @@ export default function App() {
   return(
   <>
 
-
+<header>
   <h1>Geography Flashcards</h1>
   <h2>Below are scenes from capital cities around the world. </h2>
   <h2>Guess the country for each city!</h2>
+</header>
+
 
 <div class="container">
-
-
 
 
 <div className='card'>

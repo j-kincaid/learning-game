@@ -9,10 +9,13 @@ body {
   background-color: whitesmoke;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
-
+header {
+  align-items: center;
+}
 div.container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 img {
   max-width: 18vw;
